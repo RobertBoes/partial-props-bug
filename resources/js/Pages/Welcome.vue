@@ -16,6 +16,14 @@ defineProps({
         type: String,
         required: true,
     },
+    time: {
+        type: String,
+        required: true,
+    },
+    partial: {
+        type: String,
+        required: true,
+    },
 });
 
 function handleImageError() {
@@ -81,6 +89,19 @@ function handleImageError() {
                         </template>
                     </nav>
                 </header>
+
+                <div class="flex items-center justify-center flex-col">
+                    <div class="flex gap-4 pb-4">
+                        <Link href="/">
+                            Perform reload
+                        </Link>
+                        <Link href="/" :only="['partial']">
+                            Perform partial reload
+                        </Link>
+                    </div>
+                    <p>Time: {{ time }}</p>
+                    <p>Partial: {{ partial }}</p>
+                </div>
 
                 <main class="mt-6">
                     <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">

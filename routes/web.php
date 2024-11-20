@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -11,6 +12,15 @@ Route::get('/', function () {
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'time' => function() {
+            Log::warning('Executed the time prop');
+            sleep(2);
+            return now();
+        },
+        'partial' => function() {
+            Log::info('Executed the partial prop');
+            return now();
+        },
     ]);
 });
 
